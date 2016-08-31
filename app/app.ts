@@ -7,11 +7,14 @@ import { HomePage } from './pages/home/home';
 
 @Component({
   template: '<ion-nav [root]="rootPage"></ion-nav>'
+  , providers: [{provide: Window, useValue: window}]
 })
 export class MyApp {
   rootPage: any = HomePage;
 
-  constructor(platform: Platform) {
+  constructor(platform: Platform
+    , window: Window
+  ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.

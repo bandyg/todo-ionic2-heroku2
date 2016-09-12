@@ -7,7 +7,12 @@ import { HomePage } from './pages/home/home';
 
 @Component({
   template: '<ion-nav [root]="rootPage"></ion-nav>'
-  , providers: [{provide: Window, useValue: window}]
+  , providers: [
+    {provide: Window, useValue: window},
+    {provide: 'APP_CONFIG', useValue: {
+      apiEndpoint: "https://agile-gorge-78729.herokuapp.com",
+    }}
+  ]
 })
 export class MyApp {
   rootPage: any = HomePage;

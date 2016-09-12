@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable , Inject} from '@angular/core';
 import { Http, Headers } from '@angular/http';
 // import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
@@ -16,7 +16,9 @@ export class TodoService {
   // class attributes
   todosUrl = "/api/todos"
 
-  constructor(public http: Http) {}
+  constructor(public http: Http, @Inject('APP_CONFIG') appConfig: any) {
+    this.todosUrl = appConfig.apiEndpoint + this.todosUrl;
+  }
 
   // Get all todos
   load(): Observable<Todo[]> {
